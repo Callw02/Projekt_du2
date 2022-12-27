@@ -33,7 +33,16 @@ function click_filter_element (event) {
   // G
   // CODE according to specification
   function create_filter_element (data) {
-  
+
+        let new_element = document.createElement("li")
+        new_element.classList.add(data.class)
+        new_element.textContent = data.textContent
+        data.parent.append(new_element)
+       
+        new_element.addEventListener("click", click_filter_element)
+        return new_element
+        
+    
     /*
       ARGUMENTS
         data: object that contains the following keys:
