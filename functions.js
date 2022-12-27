@@ -1,16 +1,27 @@
 // G
 // CODE According to specification
 function click_filter_element (event) {
+<<<<<<< HEAD
 
     if (event.class === "selected") {
         event.class.add("filter_container")
         event.class.remove("filter_container:active")
+=======
+    
+    if (event.target.className === "filter_container") {
+        event.target.classList.add("selected")
+        event.target.classList.remove("filter_container")
+>>>>>>> click_filter_element
     }
     else{
         event.class.remove("filter_container")
         event.class.add("filter_container:active")
     }
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> click_filter_element
     /*
       ARGUMENTS
         event: event-object created when user clicks on one of the filter elements.
