@@ -9,6 +9,10 @@ function click_filter_element (event) {
         event.class.remove("filter_container")
         event.class.add("filter_container:active")
     }
+    let i = 0
+    while(i < 10){
+        
+    }
     /*
       ARGUMENTS
         event: event-object created when user clicks on one of the filter elements.
