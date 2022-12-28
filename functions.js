@@ -1,27 +1,17 @@
 // G
 // CODE According to specification
 function click_filter_element (event) {
-<<<<<<< HEAD
-
-    if (event.class === "selected") {
-        event.class.add("filter_container")
-        event.class.remove("filter_container:active")
-=======
-    
+ 
     if (event.target.className === "filter_container") {
         event.target.classList.add("selected")
         event.target.classList.remove("filter_container")
->>>>>>> click_filter_element
+         
     }
     else{
-        event.class.remove("filter_container")
-        event.class.add("filter_container:active")
-    }
-<<<<<<< HEAD
-
-=======
-   
->>>>>>> click_filter_element
+        event.target.classList.remove("selected")
+        event.target.classList.add("filter_container")
+    
+}
     /*
       ARGUMENTS
         event: event-object created when user clicks on one of the filter elements.
@@ -45,14 +35,14 @@ function click_filter_element (event) {
   // CODE according to specification
   function create_filter_element (data) {
 
-        let new_element = document.createElement("li")
-        new_element.classList.add(data.class)
-        new_element.textContent = data.textContent
-        data.parent.append(new_element)
-       
-        new_element.addEventListener("click", click_filter_element)
-        return new_element
-        
+    let new_element = document.createElement("li")
+    new_element.classList.add(data.class)
+    new_element.textContent = data.textContent
+    data.parent.append(new_element)
+   
+    new_element.addEventListener("click", click_filter_element)
+    return new_element
+    
     
     /*
       ARGUMENTS
@@ -75,7 +65,7 @@ function click_filter_element (event) {
     */
   
   }
-  
+ 
   
   // VG
   // CODE according to specification
@@ -123,6 +113,48 @@ function click_filter_element (event) {
   // WRITE SPECIFICATION
   // ATTENTION: You need to write the specification of all three functions:
   //            create_countries_cities_filters, create_country and create_city
+  
+  /*
+  create_countries_cities_filters
+
+  ARGUMENTS
+  Does not take any arguments
+  
+  SIDE-EFFECTS
+  Starts the function array_each with the COUNTRIES array, 
+  and for every country, it calls the function "create_country"
+ */
+
+  /*
+  create_country
+
+  ARGUMENTS
+  country: An object from the array "COUNTRIES" that contains all the data for each country
+  
+  SIDE_EFFECTS
+  Creates a div, adds class "country" and "filter_container"
+  Gives the div an id wich is the country.id and appends it to "#country_filter > ul"
+  Gives the div an h1 with the name of the country and adds the ul class "filter_list"
+
+  lets "cities" be the function array_filter with the CITIES array and a test_function
+  and returns it if the city.countryID === country.id
+  */
+
+  /*
+  create_city
+
+  ARGUMENTS
+  city: each city of the array "cities"
+
+  SIDE-EFFECTS
+  let dom be create_filter_element
+  lets parent be "#country_${city.countryID} > ul"
+  gives the class "selected"
+  lets textContent = city.name
+
+  gives dom the same id as city.id
+  */
+
   function create_countries_cities_filters () {
     function create_country (country) {
       const dom = document.createElement("div");
@@ -162,42 +194,48 @@ function click_filter_element (event) {
   // ABSTRACT AND WRITE SPECIFICATION
   //    As you can see, all three functions below do basically the same thing.
   //    Abstract them to one function, and write the specification of that function.
-  function create_levels_filter () {
-    function create_level (level) {
-      const dom = create_filter_element({
-        parent: document.querySelector("#level_filter > ul"),
-        class: "selected",
-        textContent: level.name,
-      });
-      dom.dataset.id = level.id;
-    }
-    array_each(LEVELS, create_level);
-  }
-  // Create Subjects Filter
-  function create_subjects_filter () {
-    function create_subject (subject) {
-      const dom = create_filter_element({
-        parent: document.querySelector("#subject_filter > ul"),
-        class: "selected",
-        textContent: subject.name,
-      });
-      dom.dataset.id = subject.id;
-    }
-    array_each(SUBJECTS, create_subject);
-  }
-  // Create Search Field
-  function create_language_filter () {
-    function create_element (data) {
-      const dom = create_filter_element({
-        parent: document.querySelector("#language_filter > ul"),
-        class: "selected",
-        textContent: data.name,
-      });
-      dom.dataset.id = data.id;
-    }
-    array_each(LANGUAGES, create_element);
-  }
+
+  /*
+  ARGUMENT
+  create_information_filter: takes an array and a "filter name" 
   
+  SIDE-EFFECTS
+  calls upon the function array_each with the array and the function create_info
+  */
+
+  /*
+  create_info
+  ARGUMENT
+  info: info which has acess to the objects information that is used for textContent and id
+
+  SIDE-EFFECTS
+  Places dom in the "filter_name"_filter > ul
+  Adds the class selected
+  adds textContent to info.name
+
+  gives the dataset.id the same as info.id
+  */
+
+  function create_information_filter(array, filter_name){
+    
+    function create_info(info){
+            const dom = create_filter_element({
+                parent: document.querySelector(`#${filter_name}_filter > ul`),
+                class: "selected",
+                textContent: info.name,
+            })
+            dom.dataset.id = info.id;
+            
+        }
+    array_each(array, create_info)
+    }
+  
+   
+  
+
+
+
+
   
   // G / VG (see details in specification)
   // CODE according to specifications
