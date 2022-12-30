@@ -236,7 +236,7 @@ function click_filter_element (event) {
 
 
 
-  
+
   // G / VG (see details in specification)
   // CODE according to specifications
   function create_programme (programme) {
@@ -261,8 +261,37 @@ function click_filter_element (event) {
       NO RETURN VALUE
   
     */  
-  
-  }
+
+      
+      
+      let parent = document.querySelector("#programmes > ul")
+      let div = document.createElement("div")
+      div.classList.add("programme")
+      let city = CITIES[UNIVERSITIES[programme.universityID].cityID].name
+      let country = COUNTRIES[CITIES[UNIVERSITIES[programme.universityID].cityID].countryID].name
+      let sun = CITIES[UNIVERSITIES[programme.universityID].cityID].sun
+      
+      
+      
+      div.innerHTML = `<div> <h3>${programme.name}</h3>
+      
+      ${UNIVERSITIES[programme.universityID].name}
+       <br>
+       ${city}   ${country}
+      <br>
+       ${LEVELS[programme.levelID - 1].name}, ${SUBJECTS[programme.subjectID].name}, ${LANGUAGES[programme.languageID].name}
+        
+          
+       </div>
+       <div class = "bottom_programme">${city}, sun-index: ${sun} </div> `
+        
+        
+    
+    parent.append(div)
+}
+
+
+  array_each(PROGRAMMES, create_programme)
   
   
   // G
