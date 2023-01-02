@@ -69,6 +69,7 @@
   }
   #top * {
     margin: 0;
+    
   }
   #top_images {
     z-index: 1;
@@ -78,13 +79,27 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--gap);
-    
+   
   }
+    #top_images > div:nth-child(1){
+     background-image: url("geo_images/australia_normal_2.jpg");
+}
+    #top_images > div:nth-child(2)
+  {
+    background-image: url("geo_images/sweden_normal_2.jpg");
+}
+    #top_images > div:nth-child(3){
+        background-image: url("geo_images/france_normal_1.jpg");
+    }
+          
   
   #top_images > * {
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
+   
+        
+      
 
   }
   
