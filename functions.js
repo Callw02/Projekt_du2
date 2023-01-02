@@ -296,8 +296,20 @@ function click_filter_element (event) {
   
   // G
   // CODE according to the specification
-  function update_programmes () {
   
+  function update_programmes(){
+    read_filters
+    addEventListener("click", update_programmes)
+    let program = read_filters(programmes)
+    let list = document.querySelector("#programmes > ul")
+    list.innerHTML = ""
+    array_each(program, create_programme)
+    
+    
+    
+    
+  }
+
     /*
         NO ARGUMENTS
   
@@ -312,7 +324,7 @@ function click_filter_element (event) {
   
     */
   
-  }
+
   
   
   // G
@@ -322,6 +334,7 @@ function click_filter_element (event) {
   
   // Optional VG: Which parts of the function's code could be abstracted?
   //              Implement it
+  
   function read_filters () {
     
     const city_selected_dom = document.querySelectorAll("#country_filter li.selected");
@@ -416,5 +429,6 @@ function click_filter_element (event) {
     }
   
     return programmes;
+
   }
   

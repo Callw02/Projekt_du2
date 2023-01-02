@@ -78,12 +78,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--gap);
+    
   }
   
   #top_images > * {
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
+
   }
   
   #top_text {
