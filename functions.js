@@ -332,6 +332,45 @@ function click_filter_element (event) {
   // You must understand how this function works. There will be questions about it
   // in the code review (kodredovisning)
   
+/*
+ARGUMENT
+The function does not take any arguments
+
+SIDE-EFFECTS
+The function starts by creating a variable Called city_selected_dom and it contains all the elements of #country_filter li.lelected
+
+Then it creates an empty array and names it city_id_selected
+Then the function array_each is called with city_selected_dom and the function callback_add_cityID as arguments
+
+This function takes a dom_element as argument, creates the variable called id_as_interger and placed the dom_element.dataset.id in it
+then it pushs the id_as_interger into the city_selected_dom array
+
+Then it creates a empty array called universities
+It loops through the city_selected_dom array and rename every object to city_id
+Then in loops through the UNIVERSITIES array and rename every university to university
+If the university.cityID is the same as city_id, it pushes the university into the universities array
+
+Then the variable level_selected_dom is created and in it is all the elements in #level_filter li.selected
+Then it creates a empty array called level_id_selected
+
+Then it calls the function array_each with level_selected_dom and callback_add_levelID as arguments
+The function takes a dom_element as argument 
+It creates the variable id_as_interger and puts the dom_element.dataset.id in it
+Then it pushes the id_as_interget into the level_id_selected array
+
+Then it sets programmes equal to arrayfilter(programmes,test_function_level
+Which calls upon the test_function_level function which checks if programme.levelID is included in level_id_selected and returns it
+
+Then the function does the exact same thing as the level_selected_dom and level_id_selected but with languages and then with subjects.
+
+Then it declares the variable search_string and puts every element in #search_field input.value in it
+If search_string isn’t equal to “”, then it sets programmes = array_filter with programmes and test_function as arguments
+Which checks if the programme.name is included in search_string
+
+Then the function returns the programmes array after checking all the different filters and added those that met the terms of the users chosen filters.
+*/
+
+
   // Optional VG: Which parts of the function's code could be abstracted?
   //              Implement it
   
