@@ -35,8 +35,6 @@ function array_find (array, test_function) {
   
   
   
-  // The functions below ONLY USEFUL FOR VG
-  
   function array_average (array) {
     // Returns the average of all the values in array
     // It returns only the four first characters of the average

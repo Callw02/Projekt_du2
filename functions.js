@@ -1,5 +1,4 @@
-// G
-// CODE According to specification
+
 function click_filter_element (event) {
  
     if (event.target.className === "filter_container") {
@@ -21,9 +20,7 @@ function click_filter_element (event) {
         Since a filter element will have changed after the click, the list of
         programmes must be updated.
   
-        Attention VG
-          Careful with the propagation of the click-event
-  
+        
       NO RETURN VALUE
   
     */
@@ -31,8 +28,6 @@ function click_filter_element (event) {
   }
   
   
-  // G
-  // CODE according to specification
   function create_filter_element (data) {
 
     let new_element = document.createElement("li")
@@ -67,8 +62,6 @@ function click_filter_element (event) {
   }
  
   
-  // VG
-  // CODE according to specification
   function add_group_toggling (filter_container_dom) {
   
     /*
@@ -89,8 +82,6 @@ function click_filter_element (event) {
   }
   
   
-  // VG
-  // CODE according to specifications
   function toggle_cities (event) {
   
     /*
@@ -110,10 +101,7 @@ function click_filter_element (event) {
   }
   
   
-  // WRITE SPECIFICATION
-  // ATTENTION: You need to write the specification of all three functions:
-  //            create_countries_cities_filters, create_country and create_city
-  
+
   /*
   create_countries_cities_filters
 
@@ -190,11 +178,7 @@ function click_filter_element (event) {
   }
   
   
-  // G
-  // ABSTRACT AND WRITE SPECIFICATION
-  //    As you can see, all three functions below do basically the same thing.
-  //    Abstract them to one function, and write the specification of that function.
-
+  
   /*
   ARGUMENT
   create_information_filter: takes an array and a "filter name" 
@@ -237,8 +221,6 @@ function click_filter_element (event) {
 
 
 
-  // G / VG (see details in specification)
-  // CODE according to specifications
   function create_programme (programme) {
     
     /*
@@ -250,14 +232,7 @@ function click_filter_element (event) {
         This function creates the HTML-element that contains all the information
         about one programme, as seen in the video / image.
         
-        VG: The background image is a random image from among the images of the city
-            in which the programme is (via the university)
-        G:  No background image required.
-  
-  
-        VG: The "see more" interaction must be included.
-        G:  The "see more" element is not required. And that information needs not be in place.
-  
+       
       NO RETURN VALUE
   
     */  
@@ -294,15 +269,19 @@ function click_filter_element (event) {
   array_each(PROGRAMMES, create_programme)
   
   
-  // G
-  // CODE according to the specification
-  
   function update_programmes(){
     read_filters
     addEventListener("click", update_programmes)
     let program = read_filters(programmes)
     let list = document.querySelector("#programmes > ul")
     list.innerHTML = ""
+    let p = document.querySelector("#programmes > p")
+    if(program.length >= 1){
+      p.innerHTML = ""
+    } 
+    else{
+      p.textContent = "Inga program upfyller nuvarande filter."
+    }
     array_each(program, create_programme)
     
     
@@ -327,11 +306,7 @@ function click_filter_element (event) {
 
   
   
-  // G
-  // WRITE SPECIFICATION
-  // You must understand how this function works. There will be questions about it
-  // in the code review (kodredovisning)
-  
+
 /*
 ARGUMENT
 The function does not take any arguments
@@ -371,8 +346,6 @@ Then the function returns the programmes array after checking all the different 
 */
 
 
-  // Optional VG: Which parts of the function's code could be abstracted?
-  //              Implement it
   
   function read_filters () {
     
